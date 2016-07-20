@@ -4,6 +4,7 @@
 \RequirePackage{enumerate}
 \renewcommand{\familydefault}{\sfdefault}
 \RequirePackage{tikz}
+\usetikzlibrary{positioning}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{tcolorbox}
 \RequirePackage{pdflscape}
@@ -212,7 +213,9 @@ Projede yer alacak başlıca iş paketleri, her bir iş paketinin kim/kimler tar
 \path[fill=white] ([yshift=-6mm]current page header area.south west) rectangle +(10,2);
 \node[help lines, minimum width=1.5*\textheight, rectangle, rotate around={-90:(current page.center)}, align=center] at ([yshift=-\textwidth/2+\textheight/2] current page footer area.west) {\fontfamily{times}\selectfont1001BF-01 Güncelleme Tarihi: 08/01/2016};
 \draw[fill,gray] ([xshift=-5mm-1.9cm,yshift=-3.8mm] current page.east) rectangle +(10.4mm,7.7mm);
-\node[minimum width=1.5*\textheight, rectangle, rotate around={-90:(current page.center)}, align=center] at ([yshift=\textwidth-\textheight]current page text area.north) {
+%\node[minimum width=1.5*\textheight, rectangle, rotate around={-90:(current page.center)}, align=center] at ([yshift=\textwidth-\textheight]current page text area.north) {
+\node (a) at ([yshift=\textwidth/2-\textheight/2]current page text area.north) {};
+\node[minimum width=1.5*\textheight, rectangle, rotate around={-90:(current page.center)}, align=center, below=of a] {
 {\bf  İŞ-ZAMAN ÇİZELGESİ(*) }\\
 \setlength{\tabcolsep}{1mm}
 \setlength\extrarowheight{20pt}
@@ -366,10 +369,14 @@ MEVCUT ARAŞTIRMA OLANAKLARI TABLOSU (*)
 
 \newcounter{projeipsayisi}
 \setcounter{projeipsayisi}{0}
-%\newcommand\projeipekle[5]{\stepcounter{projeipsayisi}
-%	\xintFor* ##1 in {\xintSeq {#3}{#5-1}} \do {& \cellcolor{black} }%
+\newcommand\projeipekle[5]{\stepcounter{projeipsayisi}\expandafter\edef\csname prjip\theprojeipsayisi\endcsname{#1 & #2 & #3 
+	\xintiloop[1+1] 
+	& \ifnum\xintiloopindex>#4 \ifnum\xintiloopindex<#5 \noexpand\cellcolor{black}  \fi \fi
+	\ifnum\xintiloopindex=#4 \noexpand\cellcolor{black} \fi
+	\ifnum\xintiloopindex=#5 \noexpand\cellcolor{black} \fi
+	\relax \ifnum\xintiloopindex<36 \repeat}
 %	\xintFor* ##1 in {\xintSeq {#5}{36}} \do {&} %
-%	}
+	}
 
 \newcounter{ekipprojesayisi}
 \setcounter{ekipprojesayisi}{0}
