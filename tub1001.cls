@@ -55,7 +55,7 @@
 \pagestyle{empty}
 
 \newcommand{\Footer}{\begin{tikzpicture}[overlay,remember picture] \node [help lines, scale=0.8] at ([xshift=3cm, yshift=-4mm]current page footer area.north west) {\fontfamily{times}\selectfont1001BF-01 Güncelleme Tarihi: 08/01/2016} ; \end{tikzpicture}}
-\newcommand{\Header}{\begin{tikzpicture}[overlay,remember picture] \draw[fill,gray]  ([xshift=-3.8mm, yshift=-5mm]current page header area.south) rectangle +(7.7mm,10.4mm) ; \end{tikzpicture}}
+\newcommand{\Header}{\begin{tikzpicture}[overlay,remember picture] \node at ([xshift=0mm, yshift=0mm]current page header area.south) {\includegraphics[width=7.7mm, height=10.4mm]{logo.png}}; \end{tikzpicture}}
 \AtBeginShipout{\Header\Footer}
 \AtBeginShipoutFirst{\Header\Footer}
 
@@ -64,8 +64,10 @@
 \renewcommand{\baselinestretch}{0.5}
 \begin{center}
 \begin{tabularx}{\textwidth}{X}
-\rowcolor{lightgray}\multicolumn{1}{c}{{\bf \fontsize{11pt}{12pt}\selectfont
-~~~\bf 1001 – BİLİMSEL VE TEKNOLOJİK ARAŞTIRMA PROJELERİNİ DESTEKLEME PROGRAMI~~~~~}}
+%\rowcolor{lightgray}\multicolumn{1}{c}{{\bf 
+\rowcolor{lightgray}\hspace*{\fill}
+\hspace*{\fill}\fontsize{11pt}{12pt}\selectfont \bf 1001 – BİLİMSEL VE TEKNOLOJİK ARAŞTIRMA PROJELERİNİ DESTEKLEME PROGRAMI\hspace*{\fill}
+%}}
 \end{tabularx} \vspace*{0.2em}
 
 \fontsize{8pt}{12pt}\selectfont
@@ -212,7 +214,8 @@ Projede yer alacak başlıca iş paketleri, her bir iş paketinin kim/kimler tar
 \path[fill=white] (current page footer area.north west) rectangle +(10,-3);
 \path[fill=white] ([yshift=-6mm]current page header area.south west) rectangle +(10,2);
 \node[help lines, minimum width=1.5*\textheight, rectangle, rotate around={-90:(current page.center)}, align=center] at ([yshift=-\textwidth/2+\textheight/2] current page footer area.west) {\fontfamily{times}\selectfont1001BF-01 Güncelleme Tarihi: 08/01/2016};
-\draw[fill,gray] ([xshift=-5mm-1.9cm,yshift=-3.8mm] current page.east) rectangle +(10.4mm,7.7mm);
+
+\node[rotate=-90] at  ([xshift=-5mm-1.9cm,yshift=-3.8mm] current page.east) {\includegraphics[width=7.7mm, height=10.4mm]{logo.png}};
 %\node[minimum width=1.5*\textheight, rectangle, rotate around={-90:(current page.center)}, align=center] at ([yshift=\textwidth-\textheight]current page text area.north) {
 \node (a) at ([yshift=\textwidth/2-\textheight/2]current page text area.north) {};
 \node[minimum width=1.5*\textheight, rectangle, rotate around={-90:(current page.center)}, align=center, below=of a] {
