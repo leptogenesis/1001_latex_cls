@@ -3,16 +3,18 @@
 %\usepackage{showframe}
 \begin{document}
 \begin{basvuruformu}
+\def\vd{vd.}
 \begin{projeozeti}{baslik}{anahtar kelimeler}
 \vspace*{2cm}
-\vspace*{2cm}
+\citet{belle}
 \vspace*{2cm}
 \end{projeozeti}
 
+\def\vd{{\em et al.}}
 \begin{projectsummary}{title}{keywords}
-\vspace*{2cm}
-\vspace*{2cm}
-\vspace*{2cm}
+\citet{belle}
+
+
 \end{projectsummary}
 
 \begin{amacvehedefler}
@@ -69,7 +71,13 @@ yontem
 
 \begin{yayginetki}
 \end{yayginetki}
- 
 \end{basvuruformu}
+
+\begin{kaynaklar}
+\def\vd{vd.} 
+\begin{thebibliography}{99}
+\bibitem[Choi \noexpand\vd (2003)]{belle}S. K. Choi et al. (Belle), Phys. Rev. Lett. 91, 262001 (2003), arXiv:hep-ex/0309032 [hep-ex] 
+\end{thebibliography}
+ \end{kaynaklar}
 \end{document}
 

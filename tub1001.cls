@@ -14,11 +14,13 @@
 \RequirePackage{colortbl}
 \RequirePackage{multirow}
 \RequirePackage{atbegshi}
+\RequirePackage{natbib}
 \RequirePackage{tikzpagenodes}
 \tcbuselibrary{most,breakable}
 %\tcbset{enhanced, frame engine=path, frame style={line width=5pt}}
 %\tcbsetforeverylayer{enhanced, 
-\tcbset{common/.style={enhanced, 
+
+\tcbset{common/.style={freelance,%spartan, 
 			%skin first=enhanced, skin middle=enhanced, skin last=enhanced, 
 				left=0mm,
 				top=0mm,
@@ -44,9 +46,13 @@
 \RequirePackage{helvet}
 
 \RequirePackage{titlesec}
-\titleformat{\subsection}[block]{\normalfont\fontsize{9}{15}\bfseries\bf\hspace*{1em}\thesubsection.}{}{1em}{} 
-\titleformat{\subsubsection}[block]{\normalfont\fontsize{9}{15}\bfseries\bf\hspace*{4em}\thesubsubsection.}{}{1em}{} 
-\titleformat{\section}{\normalfont\fontsize{9}{15}\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]{\normalfont\fontsize{9}{15}\selectfont\bfseries\bf\hspace*{1em}\thesubsection.}{}{1em}{} 
+\titleformat{\subsubsection}[block]{\normalfont\fontsize{9}{15}\selectfont\bfseries\bf\hspace*{4em}\thesubsubsection.}{}{1em}{} 
+\titleformat{\section}{\normalfont\fontsize{9}{15}\selectfont\bfseries}{\thesection.}{1em}{}
+
+\newif\ifform  
+\renewcommand\bibsection{\noindent{\bf Ek-1: Kaynaklar} \vspace*{1em}}
+
   
 \newcolumntype{b}{X}
 \newcolumntype{s}{>{\hsize=.5\hsize}X}
@@ -54,13 +60,14 @@
 \fontsize{9pt}{12pt}\selectfont
 \pagestyle{empty}
 
-\newcommand{\Footer}{\begin{tikzpicture}[overlay,remember picture] \node [help lines, scale=0.8] at ([xshift=3cm, yshift=-4mm]current page footer area.north west) {\fontfamily{times}\selectfont1001BF-01 Güncelleme Tarihi: 08/01/2016} ; \end{tikzpicture}}
-\newcommand{\Header}{\begin{tikzpicture}[overlay,remember picture] \node at ([xshift=0mm, yshift=0mm]current page header area.south) {\includegraphics[width=7.7mm, height=10.4mm]{logo.png}}; \end{tikzpicture}}
-\AtBeginShipout{\Header\Footer}
-\AtBeginShipoutFirst{\Header\Footer}
+\newcommand{\Footer}{\def\guncellemetarihi{\ifform 08/01/2016 \else 27/05/2013 \fi} \begin{tikzpicture}[overlay,remember picture] \node [help lines, scale=0.8] at ([xshift=3cm, yshift=-4mm]current page footer area.north west) {\fontfamily{times}\selectfont1001BF-01 Güncelleme Tarihi: \guncellemetarihi} ; \end{tikzpicture}}
+\newcommand{\Header}{\ifform\begin{tikzpicture}[overlay,remember picture] \node at ([xshift=0mm, yshift=0mm]current page header area.south) {\includegraphics[width=7.7mm, height=10.4mm]{logo.png}}; \end{tikzpicture}\fi}
+\AtBeginShipout{\AtBeginShipoutAddToBox{\Header\Footer}}
+%\AtBeginShipoutFirst{\Header\Footer}
 
 \newenvironment{basvuruformu}%
 {%
+\global\let\ifform\iftrue
 \renewcommand{\baselinestretch}{0.5}
 \begin{center}
 \begin{tabularx}{\textwidth}{X}
@@ -86,6 +93,9 @@ adresinden ulaşabilirsiniz.
 \noindent BAŞVURU FORMU EKLER \vspace*{1em}\\
 EK-1: KAYNAKLAR \\
 EK-2: BÜTÇE VE GEREKÇESİ 
+\newpage
+\global\let\ifform\iffalse
+
 }
 
 \newenvironment{projeozeti}[2]
@@ -113,7 +123,7 @@ Anahtar Kelimeler ve İngilizce karşılıkları (keywords) uluslararası litera
 
 \tcbline
 %\begin{center}
-{\hspace*{\fill}\bf Proje Özeti: \hspace*{\fill}}
+{\hspace*{\fill}\bf Proje Özeti: \hspace*{\fill}} \\
 %\end{center}
 }
 {
@@ -134,7 +144,7 @@ Anahtar Kelimeler ve İngilizce karşılıkları (keywords) uluslararası litera
 \tcbline*
 
 %\begin{center}
-{\hspace*{\fill}\bf Project Summary:\hspace*{\fill}}
+{\hspace*{\fill}\bf Project Summary \hspace*{\fill}} \\\fontsize{9pt}{12pt}\selectfont \\
 %\end{center}
 \def\keywords{#2}
 }
@@ -438,4 +448,11 @@ PROJE ÇIKTILARININ PAYLAŞIMI VE YAYILIMI TABLOSU (*)
 \ignorespacesafterend
 }
 
-
+\newenvironment{kaynaklar}
+{\newpage\ignorespaces%\noindent {\bf Ek-1: Kaynaklar} \\
+%\begin{thebibliography}{99}
+}
+{
+%\end{thebibliography}
+\ignorespacesafterend
+}
