@@ -24,16 +24,17 @@
 			%skin first=enhanced, skin middle=enhanced, skin last=enhanced, 
 				left=0mm,
 				top=0mm,
-				breakable,
+				breakable=unlimited,
 				colback=white,
 				colframe=black, 
 				sharp corners,
-				segmentation style={black,solid},
+				segmentation style={black,solid, shorten <= -\parindent, shorten >= \parindent},
 				frame engine=path,
 				frame code={\path[draw,line width=1] (interior.north west) rectangle (interior.south east);},
 				extras last={frame code={\path[draw,line width=1] (interior.north west) rectangle (interior.south east);}},
 				extras first={frame code={\path[draw,line width=1] (interior.north west) rectangle (interior.south east);}},
 				extras middle={frame code={\path[draw,line width=1] (interior.north west) rectangle (interior.south east);}},
+				parbox=false,
 				}
 			}
 			
@@ -140,9 +141,7 @@ Anahtar Kelimeler ve İngilizce karşılıkları (keywords) uluslararası litera
 %\begin{tcolorbox}[left=0mm,top=0mm,breakable,colback=white,colframe=black, sharp corners,segmentation style={black,solid}, freelance, frame code={\path[draw,line width=8,red] (interior.north west) rectangle (interior.south east);}] 
 \begin{tcolorbox}[common]
 {\bf Project Title:} #1
-
-\tcbline*
-
+\tcbline* 
 %\begin{center}
 {\hspace*{\fill}\bf Project Summary \hspace*{\fill}} \\\fontsize{9pt}{12pt}\selectfont \\
 %\end{center}
@@ -218,6 +217,7 @@ Projede uygulanacak yöntem(ler)le ilerleme kaydedilememesi durumunda devreye so
 \subsubsection{YÖNETİM DÜZENİ (İş Paketleri (İP), Görev Dağılımı ve Süreçleri)}\fontsize{9pt}{12pt}\selectfont
 Projede yer alacak başlıca iş paketleri, her bir iş paketinin kim/kimler tarafından ne kadarlık bir zaman diliminde gerçekleştirileceği hakkındaki bilgiler aşağıda yer alan {\bf\underline{İş-Zaman Çizelgesi}} doldurularak verilmelidir. Her bir iş paketinde görev alacak personelin niteliği (yürütücü, araştırmacı, danışman, bursiyer, yardımcı personel) belirtilmelidir. Gelişme ve sonuç raporu hazırlama aşamaları proje çalışmalarına paralel olarak yürütülmeli ve ayrı bir iş paketi olarak gösterilmemelidir. 
 
+\bursiyerlistesi
 \newpage
 
 \begin{tikzpicture}[overlay, remember picture]
@@ -232,7 +232,7 @@ Projede yer alacak başlıca iş paketleri, her bir iş paketinin kim/kimler tar
 {\bf  İŞ-ZAMAN ÇİZELGESİ(*) }\\
 \setlength{\tabcolsep}{1mm}
 \setlength\extrarowheight{20pt}
-\begin{tabular}{| l | l | l | *{36}{c|}}
+\begin{tabular}{| p{0.03\textwidth} | p{0.1\textwidth} | p{0.1\textwidth} | *{36}{c|}}
 \hline \rowcolor{lightgray} & &  & \multicolumn{36}{c|}{\multirow{1}{*}{\bf AYLAR}} \\
 \rowcolor{lightgray} 
    \cline{4-39}
@@ -257,9 +257,9 @@ Projenin tam anlamıyla başarıya ulaşmış sayılabilmesi için {\bf İş-Zam
 {\hspace*{\fill}\bf BAŞARI ÖLÇÜTLERİ TABLOSU (*) \hspace*{\fill}}\\
 %\end{center}
 \setlength\extrarowheight{10pt}
-\begin{tabularx}{\textwidth}{|c|p{3in}|X|X|}
+\begin{tabularx}{\textwidth}{|c|p{3in}|X|c|}
 \hline
-\rowcolor{lightgray} \bf İP No & \bf \hspace*{1in}İş Paketi Hedefi  & {\setlength\extrarowheight{0pt} \begin{tabular}{c}\bf Başarı Ölçütü \\ \bf (\%, sayı, ifade, vb) \end{tabular}} & {\setlength\extrarowheight{0pt}\begin{tabular}{c} \bf Projenin \\ \bf Başarısındaki \\ \bf Önemi (*) \end{tabular} }\tabularnewline
+\rowcolor{lightgray} \bf İP No & \bf \hspace*{1in}İş Paketi Hedefi  & {\setlength\extrarowheight{0pt} \hspace*{\fill} \begin{tabular}{c}\bf Başarı Ölçütü \\ \bf (\%, sayı, ifade, vb) \end{tabular}} \hspace*{\fill} & {\setlength\extrarowheight{0pt}\begin{tabular}{c} \bf Projenin \\ \bf Başarısındaki \\ \bf Önemi (*) \end{tabular} }\tabularnewline
 \hline
 \xintFor* ##1 in {\xintSeq {1}{\theprojebasariolcutusayisi}} \do {\csname prjbasariolcutu##1\endcsname \\ \hline}
 \end{tabularx}
@@ -316,7 +316,7 @@ Proje yürütücüsünün TÜBİTAK, üniversite ya da diğer kurum/kuruluşlar�
 {\hspace*{\fill} \bf PROJE YÜRÜTÜCÜSÜNÜN SON 5 YILDA YAPTIĞI YAYINLAR (*)
 \hspace*{\fill}}\\%\end{center}
 \setlength\extrarowheight{10pt}
-\begin{tabularx}{\textwidth}{|c|c|X|X|X|}
+\begin{tabularx}{\textwidth}{|p{0.26\textwidth}|p{0.26\textwidth}|X|X|p{0.05\textwidth}|}
 \hline
 \rowcolor{lightgray} \bf Yazar(lar) & \bf Makale Başlığı & \bf Dergi & \bf Cilt/Sayı/Sayfa & \bf Tarih \\
 \hline
@@ -329,7 +329,7 @@ Proje ekibinin (proje yürütücüsü, araştırmacı, danışman) TÜBİTAK’a
 %\begin{center}
 {\hspace*{\fill}\bf PROJE EKİBİNİN ÖNERİLEN PROJE KONUSU İLE İLGİLİ PROJELERİ (*)
 \hspace*{\fill}}\\%\end{center}
-\begin{tabularx}{\textwidth}{|c|c|X|X|X|}
+\begin{tabularx}{\textwidth}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|X|X|}
 \hline
 \rowcolor{lightgray} \bf Adı Soyadı & \bf Projedeki Görevi & \bf Proje Adı & \bf Başlama-Bitiş Tarihi & \bf Önerilen Projeden Farkı \\
 \hline
@@ -370,6 +370,7 @@ MEVCUT ARAŞTIRMA OLANAKLARI TABLOSU (*)
 \setcounter{tubitakprojesayisi}{0}
 \def\yurutucutubitakprojeekle#1#2#3#4#5{\stepcounter{tubitakprojesayisi}\expandafter\edef\csname yrtctubitakproje\thetubitakprojesayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
 \def\yurutucudigerprojeekle#1#2#3#4#5{\stepcounter{digerprojesayisi}\expandafter\edef\csname yrtcdigerproje\thedigerprojesayisi\endcsname{ #1 & #2 & #3 & #4 & #5}}
+%\def\yurutucuyayinekle#1#2#3#4#5{\stepcounter{yayinsayisi}\expandafter\edef\csname yrtcyayin\theyayinsayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
 \def\yurutucuyayinekle#1#2#3#4#5{\stepcounter{yayinsayisi}\expandafter\edef\csname yrtcyayin\theyayinsayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
 
 \newcounter{projerisksayisi}
@@ -378,7 +379,7 @@ MEVCUT ARAŞTIRMA OLANAKLARI TABLOSU (*)
 
 \newcounter{projebasariolcutusayisi}
 \setcounter{projebasariolcutusayisi}{0}
-\def\projebasariolcutuekle#1#2#3#4{\stepcounter{projebasariolcutusayisi}\expandafter\edef\csname prjbasariolcutu\theprojerisksayisi\endcsname{#1 & #2 & #3 & #4}}
+\def\projebasariolcutuekle#1#2#3#4{\stepcounter{projebasariolcutusayisi}\expandafter\edef\csname prjbasariolcutu\theprojebasariolcutusayisi\endcsname{#1 & #2 & #3 & #4}}
 
 \newcounter{projeipsayisi}
 \setcounter{projeipsayisi}{0}
@@ -401,7 +402,7 @@ MEVCUT ARAŞTIRMA OLANAKLARI TABLOSU (*)
 
 \newcounter{projeciktipaylasimisayisi}
 \setcounter{projeciktipaylasimisayisi}{0}
-\def\projeciktilarininpaylasimiekle#1#2#3{\stepcounter{projeciktipaylasimisayisi}\expandafter\edef\csname prjciktipaylasimi\themevcutekipmansayisi\endcsname{#1 & #2 & #3}}
+\def\projeciktilarininpaylasimiekle#1#2#3{\stepcounter{projeciktipaylasimisayisi}\expandafter\edef\csname prjciktipaylasimi\theprojeciktipaylasimisayisi\endcsname{#1 & #2 & #3}}
 
 \def\bilimselyayginetkiekle#1{\def\bilimseletki{#1}}
 \def\ekonomikyayginetkiekle#1{\def\ekonomiketki{#1}}
@@ -436,9 +437,9 @@ Proje faaliyetleri boyunca elde edilecek çıktıların ve ulaşılacak sonuçla
 PROJE ÇIKTILARININ PAYLAŞIMI VE YAYILIMI TABLOSU (*)
 \hspace*{\fill}}\\%\end{center}
 \setlength\extrarowheight{10pt}
-\begin{tabularx}{\textwidth}{|c|c|X|}
+\begin{tabularx}{\textwidth}{|p{0.35\textwidth}|p{0.35\textwidth}|X|}
 \hline
-\rowcolor{lightgray} {\setlength\extrarowheight{0pt}\fontsize{9pt}{12pt}\selectfont\begin{tabular}{c} {\bf Faaliyet Türü} \\ (Toplantı, Çalıştay, Eğitim, Web Sayfası vb.) \end{tabular} }& {\bf Paydaş/Potansiyel Kullanıcılar} & \bf \hspace*{1cm}Faaliyet Zaman ve Süresi \\
+\rowcolor{lightgray} {\setlength\extrarowheight{0pt}\fontsize{9pt}{12pt}\selectfont\begin{tabular}{c} {\bf Faaliyet Türü} \\ (Toplantı, Çalıştay, Eğitim, Web Sayfası vb.) \end{tabular} }& \hspace*{\fill} {\bf Paydaş/Potansiyel Kullanıcılar}\hspace*{\fill} & \bf Faaliyet Zaman ve Süresi \\
 \hline
 \xintFor* ##1 in {\xintSeq {1}{\theprojeciktipaylasimisayisi}} \do {\csname prjciktipaylasimi##1\endcsname \\ \hline}
 \end{tabularx}
