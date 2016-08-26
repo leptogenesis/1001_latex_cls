@@ -343,7 +343,7 @@ Bu bölümde projenin yürütüleceği kurum/kuruluş(lar)da var olup da projede
 MEVCUT ARAŞTIRMA OLANAKLARI TABLOSU (*)
 \hspace*{\fill}}\\%\end{center}
 \setlength\extrarowheight{10pt}
-\begin{tabularx}{\textwidth}{|X|X|X}
+\begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
 \rowcolor{lightgray} 
 {\setlength\extrarowheight{2pt}\begin{tabular}{c}\bf Mevcut Altyapı/Ekipman Türü, Modeli \\ (Laboratuvar, Araç, Makine-Teçhizat vb.) \end{tabular}}& \bf Mevcut Olduğu Kurum Kuruluş & \bf Projedeki Kullanım Amacı \\
