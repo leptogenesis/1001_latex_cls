@@ -217,6 +217,7 @@ Projede uygulanacak yöntem(ler)le ilerleme kaydedilememesi durumunda devreye so
 \subsubsection{YÖNETİM DÜZENİ (İş Paketleri (İP), Görev Dağılımı ve Süreçleri)}\fontsize{9pt}{12pt}\selectfont
 Projede yer alacak başlıca iş paketleri, her bir iş paketinin kim/kimler tarafından ne kadarlık bir zaman diliminde gerçekleştirileceği hakkındaki bilgiler aşağıda yer alan {\bf\underline{İş-Zaman Çizelgesi}} doldurularak verilmelidir. Her bir iş paketinde görev alacak personelin niteliği (yürütücü, araştırmacı, danışman, bursiyer, yardımcı personel) belirtilmelidir. Gelişme ve sonuç raporu hazırlama aşamaları proje çalışmalarına paralel olarak yürütülmeli ve ayrı bir iş paketi olarak gösterilmemelidir. 
 
+\bursiyerlistesi
 \newpage
 
 \begin{tikzpicture}[overlay, remember picture]
@@ -367,22 +368,22 @@ MEVCUT ARAŞTIRMA OLANAKLARI TABLOSU (*)
 \setcounter{digerprojesayisi}{0}
 \newcounter{tubitakprojesayisi}
 \setcounter{tubitakprojesayisi}{0}
-\def\yurutucutubitakprojeekle#1#2#3#4#5{\stepcounter{tubitakprojesayisi}\expandafter\edef\csname yrtctubitakproje\thetubitakprojesayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
-\def\yurutucudigerprojeekle#1#2#3#4#5{\stepcounter{digerprojesayisi}\expandafter\edef\csname yrtcdigerproje\thedigerprojesayisi\endcsname{ #1 & #2 & #3 & #4 & #5}}
-%\def\yurutucuyayinekle#1#2#3#4#5{\stepcounter{yayinsayisi}\expandafter\edef\csname yrtcyayin\theyayinsayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
-\def\yurutucuyayinekle#1#2#3#4#5{\stepcounter{yayinsayisi}\expandafter\edef\csname yrtcyayin\theyayinsayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
+\def\yurutucutubitakprojeekle#1#2#3#4#5{\stepcounter{tubitakprojesayisi}\expandafter\protected@edef\csname yrtctubitakproje\thetubitakprojesayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
+\def\yurutucudigerprojeekle#1#2#3#4#5{\stepcounter{digerprojesayisi}\expandafter\protected@edef\csname yrtcdigerproje\thedigerprojesayisi\endcsname{ #1 & #2 & #3 & #4 & #5}}
+%\def\yurutucuyayinekle#1#2#3#4#5{\stepcounter{yayinsayisi}\expandafter\protected@edef\csname yrtcyayin\theyayinsayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
+\def\yurutucuyayinekle#1#2#3#4#5{\stepcounter{yayinsayisi}\expandafter\protected@edef\csname yrtcyayin\theyayinsayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
 
 \newcounter{projerisksayisi}
 \setcounter{projerisksayisi}{0}
-\def\projeriskekle#1#2#3{\stepcounter{projerisksayisi}\expandafter\edef\csname prjrisk\theprojerisksayisi\endcsname{#1 & #2 & #3}}
+\def\projeriskekle#1#2#3{\stepcounter{projerisksayisi}\expandafter\protected@edef\csname prjrisk\theprojerisksayisi\endcsname{#1 & #2 & #3}}
 
 \newcounter{projebasariolcutusayisi}
 \setcounter{projebasariolcutusayisi}{0}
-\def\projebasariolcutuekle#1#2#3#4{\stepcounter{projebasariolcutusayisi}\expandafter\edef\csname prjbasariolcutu\theprojebasariolcutusayisi\endcsname{#1 & #2 & #3 & #4}}
+\def\projebasariolcutuekle#1#2#3#4{\stepcounter{projebasariolcutusayisi}\expandafter\protected@edef\csname prjbasariolcutu\theprojebasariolcutusayisi\endcsname{#1 & #2 & #3 & #4}}
 
 \newcounter{projeipsayisi}
 \setcounter{projeipsayisi}{0}
-\newcommand\projeipekle[5]{\stepcounter{projeipsayisi}\expandafter\edef\csname prjip\theprojeipsayisi\endcsname{#1 & #2 & #3 
+\newcommand\projeipekle[5]{\stepcounter{projeipsayisi}\expandafter\protected@edef\csname prjip\theprojeipsayisi\endcsname{#1 & #2 & #3 
 	\xintiloop[1+1] 
 	& \ifnum\xintiloopindex>#4 \ifnum\xintiloopindex<#5 \noexpand\cellcolor{black}  \fi \fi
 	\ifnum\xintiloopindex=#4 \noexpand\cellcolor{black} \fi
@@ -393,15 +394,15 @@ MEVCUT ARAŞTIRMA OLANAKLARI TABLOSU (*)
 
 \newcounter{ekipprojesayisi}
 \setcounter{ekipprojesayisi}{0}
-\def\ekipprojeekle#1#2#3#4#5{\stepcounter{ekipprojesayisi}\expandafter\edef\csname ekpproje\theekipprojesayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
+\def\ekipprojeekle#1#2#3#4#5{\stepcounter{ekipprojesayisi}\expandafter\protected@edef\csname ekpproje\theekipprojesayisi\endcsname{#1 & #2 & #3 & #4 & #5}}
 
 \newcounter{mevcutekipmansayisi}
 \setcounter{mevcutekipmansayisi}{0}
-\def\mevcutekipmanekle#1#2#3{\stepcounter{mevcutekipmansayisi}\expandafter\edef\csname mvctekipman\themevcutekipmansayisi\endcsname{#1 & #2 & #3}}
+\def\mevcutekipmanekle#1#2#3{\stepcounter{mevcutekipmansayisi}\expandafter\protected@edef\csname mvctekipman\themevcutekipmansayisi\endcsname{#1 & #2 & #3}}
 
 \newcounter{projeciktipaylasimisayisi}
 \setcounter{projeciktipaylasimisayisi}{0}
-\def\projeciktilarininpaylasimiekle#1#2#3{\stepcounter{projeciktipaylasimisayisi}\expandafter\edef\csname prjciktipaylasimi\theprojeciktipaylasimisayisi\endcsname{#1 & #2 & #3}}
+\def\projeciktilarininpaylasimiekle#1#2#3{\stepcounter{projeciktipaylasimisayisi}\expandafter\protected@edef\csname prjciktipaylasimi\theprojeciktipaylasimisayisi\endcsname{#1 & #2 & #3}}
 
 \def\bilimselyayginetkiekle#1{\def\bilimseletki{#1}}
 \def\ekonomikyayginetkiekle#1{\def\ekonomiketki{#1}}
