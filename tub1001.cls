@@ -216,8 +216,12 @@ Projede uygulanacak yöntem(ler)le ilerleme kaydedilememesi durumunda devreye so
 \subsection{PROJE YÖNETİMİ}
 \subsubsection{YÖNETİM DÜZENİ (İş Paketleri (İP), Görev Dağılımı ve Süreçleri)}\fontsize{9pt}{12pt}\selectfont
 Projede yer alacak başlıca iş paketleri, her bir iş paketinin kim/kimler tarafından ne kadarlık bir zaman diliminde gerçekleştirileceği hakkındaki bilgiler aşağıda yer alan {\bf\underline{İş-Zaman Çizelgesi}} doldurularak verilmelidir. Her bir iş paketinde görev alacak personelin niteliği (yürütücü, araştırmacı, danışman, bursiyer, yardımcı personel) belirtilmelidir. Gelişme ve sonuç raporu hazırlama aşamaları proje çalışmalarına paralel olarak yürütülmeli ve ayrı bir iş paketi olarak gösterilmemelidir. 
-
-\bursiyerlistesi
+\@ifundefined{bursiyerlistesi}
+        {%
+        }
+        {%
+        \bursiyerlistesi
+        }
 \newpage
 
 \begin{tikzpicture}[overlay, remember picture]
